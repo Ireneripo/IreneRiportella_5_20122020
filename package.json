@@ -1,0 +1,19 @@
+{
+  "name": "ireneriportella_5_20122020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:.public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ireneripo/IreneRiportella_5_20122020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ireneripo/IreneRiportella_5_20122020/issues"
+  },
+  "homepage": "https://github.com/Ireneripo/IreneRiportella_5_20122020#readme"
+}
