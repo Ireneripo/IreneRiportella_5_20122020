@@ -23,9 +23,10 @@ header {
   background-color: #f3e9f1;
   justify-content: space-around;
   margin-bottom: 1.2rem;
+  padding: 1.5rem;
 }
 .logo {
-  max-width: 30%;
+  max-width: 40%;
 }
 .panier {
   align-self: center;
@@ -41,7 +42,8 @@ ul {
     max-width: 80%;
     background-color: #f3e9f1;
     margin: 1rem;
-    padding: 1rem;
+    padding: 0.5rem;
+    padding-top: 1.2rem;
     border-radius: 15px;
     box-shadow: 3px 3px 10px #bfbfbf;
     &:nth-child(5) {
@@ -51,6 +53,7 @@ ul {
       width: 90%;
       display: block;
       margin: auto;
+      border-radius: 15px;
     }
     & .content {
       text-align: center;
@@ -72,6 +75,9 @@ ul {
         padding: 15px;
         border-radius: 25px;
         box-shadow: 3px 3px 10px #bfbfbf;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }

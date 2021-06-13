@@ -28,10 +28,11 @@ header {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 1.2rem;
+  padding: 1.5rem;
 }
 
 .logo {
-  max-width: 30%;
+  max-width: 40%;
 }
 
 .panier {
@@ -59,7 +60,8 @@ ul {
   max-width: 80%;
   background-color: #f3e9f1;
   margin: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
+  padding-top: 1.2rem;
   border-radius: 15px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
@@ -73,6 +75,7 @@ ul {
   width: 90%;
   display: block;
   margin: auto;
+  border-radius: 15px;
 }
 
 #container .carte .content {
@@ -101,6 +104,10 @@ ul {
   border-radius: 25px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
+}
+
+#container .carte .content .btn:hover {
+  cursor: pointer;
 }
 
 footer {
