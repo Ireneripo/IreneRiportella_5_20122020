@@ -5,7 +5,7 @@ const id = new URLSearchParams(url);
 const produit = id.get("id");
 console.log(produit);
 
-fetch(`http://localhost:3000/${produit}`)
+fetch(`http://localhost:3000/${produit._id}`)
   .then((httpBodyResponse) => {
     return httpBodyResponse.json();
   })

@@ -59,12 +59,15 @@ ul {
       text-align: center;
       & .titre {
         margin: 15px;
+        font-size: 1.2rem;
       }
       & .description {
-        margin: 15px;
+        margin: 10px;
+        font-size: 0.8rem;
       }
       & .prix {
-        padding: 20px;
+        padding: 10px;
+        font-size: 1rem;
       }
       & .btn {
         display: block;
@@ -72,9 +75,10 @@ ul {
         margin-bottom: 10px;
         width: 8rem;
         background-color: #bae0f7;
-        padding: 15px;
+        padding: 12px;
         border-radius: 25px;
         box-shadow: 3px 3px 10px #bfbfbf;
+        font-size: 1rem;
         &:hover {
           cursor: pointer;
         }
@@ -86,4 +90,29 @@ ul {
 footer {
   padding: 20px;
   background-color: #e2e2e2;
+}
+
+@media screen and (min-width: 600px) {
+  #container {
+    & .carte {
+      max-width: 40%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #container {
+    & .carte {
+      max-width: 25%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1200px) {
+}
+
+@media screen and (min-width: 1440px) {
 }

@@ -84,14 +84,17 @@ ul {
 
 #container .carte .content .titre {
   margin: 15px;
+  font-size: 1.2rem;
 }
 
 #container .carte .content .description {
-  margin: 15px;
+  margin: 10px;
+  font-size: 0.8rem;
 }
 
 #container .carte .content .prix {
-  padding: 20px;
+  padding: 10px;
+  font-size: 1rem;
 }
 
 #container .carte .content .btn {
@@ -100,10 +103,11 @@ ul {
   margin-bottom: 10px;
   width: 8rem;
   background-color: #bae0f7;
-  padding: 15px;
+  padding: 12px;
   border-radius: 25px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
+  font-size: 1rem;
 }
 
 #container .carte .content .btn:hover {
@@ -113,5 +117,17 @@ ul {
 footer {
   padding: 20px;
   background-color: #e2e2e2;
+}
+
+@media screen and (min-width: 600px) {
+  #container .carte {
+    max-width: 40%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #container .carte {
+    max-width: 25%;
+  }
 }
 /*# sourceMappingURL=main.css.map */
