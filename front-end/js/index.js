@@ -7,7 +7,7 @@
 //Fonction qui permet de récupérer les produits dans l'API
 
 function getProducts() {
-  //On saisit l'URL de l'API, on utilise fetch
+  //Je déclare l'URL de l'API, j'utilise fetch
 
   return (
     fetch("http://localhost:3000/api/teddies")
@@ -31,7 +31,7 @@ function getProducts() {
 
 function displayProducts(products) {
   products.forEach(function (produit) {
-    //On crée les éléments HTML
+    //Création des éléments HTML
 
     let container = document.getElementById("container");
 
@@ -51,7 +51,7 @@ function displayProducts(products) {
 
     let btn = document.createElement("a");
 
-    //On structure les éléments dans le HTML
+    //Structure des éléments dans le HTML
 
     container.appendChild(carte);
 
@@ -69,7 +69,7 @@ function displayProducts(products) {
 
     bottomCarte.appendChild(btn);
 
-    //On donne des attributs à nos éléments (une classe par exemple)
+    //Déclaration d'attributs
 
     carte.setAttribute("class", "carte");
 
@@ -89,28 +89,23 @@ function displayProducts(products) {
 
     btn.setAttribute("class", "btn");
 
-    /*
-
-       * On rend notre HTML dynamique, il récupère donc les informations des produits
-
-       * depuis l'API pour les afficher ensuite
-
-       */
+    /*Je récupère les informations des produits depuis l'API pour les afficher ensuite*/
 
     titre.textContent = produit.name;
 
     description.textContent = produit.description;
 
-    prix.textContent = "Prix: " + produit.price + " €";
+    prix.textContent = "Prix: " + produit.price / 100 + " €";
 
     image.src = produit.imageUrl;
 
     btn.textContent = "Voir produit";
 
-    // ADDEVENTLISTENER
+    //Ècoute de l'événement (click) pour que l'utilisateur sélectionne son produit et redirection vers la page produit
 
     btn.addEventListener("click", function () {
       btn.href = "./produit.html?id" + produit._id;
     });
+    console.log(produit._id);
   });
 }
