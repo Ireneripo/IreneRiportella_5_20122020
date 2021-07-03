@@ -1,10 +1,4 @@
 //récupération de l'ID de l'ourson de la page
-
-// const url = window.location.search;
-// const id = new URLSearchParams(url);
-// const produit = id.get("id");
-// console.log(produit);
-
 let params = new URL(window.location).searchParams;
 let produit = params.get("id");
 console.log(produit);
