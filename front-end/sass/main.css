@@ -6,13 +6,13 @@
 }
 
 html {
-  width: 100%;
   -webkit-overflow-x: hidden;
   overflow-x: hidden;
 }
 
 body {
   font-family: "Rubik", sans-serif;
+  background-color: #f2f2f2;
 }
 
 a {
@@ -24,21 +24,23 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #f3e9f1;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin-bottom: 1.2rem;
-  padding: 1.5rem;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-10%, #ffb3f0), color-stop(10%, #f3e9f1));
+  background: linear-gradient(360deg, #ffb3f0 -10%, #f3e9f1 10%);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2% 7%;
 }
 
 .logo {
-  max-width: 40%;
+  max-width: 45%;
 }
 
 .panier {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  font-size: 1.2rem;
 }
 
 ul {
@@ -54,12 +56,13 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 2rem 0;
 }
 
 #container .carte {
   max-width: 80%;
   background-color: #f3e9f1;
-  margin: 1rem;
+  margin: 1.3rem;
   padding: 0.5rem;
   padding-top: 1.2rem;
   border-radius: 15px;
@@ -67,11 +70,9 @@ ul {
           box-shadow: 3px 3px 10px #bfbfbf;
 }
 
-#container .carte:nth-child(5) {
-  margin-bottom: 3rem;
-}
-
 #container .carte .image {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 90%;
   display: block;
   margin: auto;
@@ -84,7 +85,7 @@ ul {
 
 #container .carte .content .titre {
   margin: 15px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 #container .carte .content .description {
@@ -94,7 +95,7 @@ ul {
 
 #container .carte .content .prix {
   padding: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 #container .carte .content .btn {
@@ -107,7 +108,7 @@ ul {
   border-radius: 25px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 #container .carte .content .btn:hover {
@@ -116,18 +117,89 @@ ul {
 
 footer {
   padding: 20px;
-  background-color: #e2e2e2;
+  background-color: #f3e9f1;
+}
+
+.containerproduit {
+  padding: 10%;
+  background-color: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.containerproduit .image {
+  -webkit-box-shadow: 3px 3px 10px #bfbfbf;
+          box-shadow: 3px 3px 10px #bfbfbf;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.containerproduit .info {
+  padding-top: 10%;
+}
+
+.containerproduit .info .titre {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.containerproduit .info .description {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 10%;
+}
+
+.containerproduit .info .price {
+  text-align: center;
+  padding: 5%;
+}
+
+.containerproduit .info .addtocart {
+  background-color: #bae0f7;
+  border-style: none;
+  -webkit-box-shadow: 3px 3px 10px #bfbfbf;
+          box-shadow: 3px 3px 10px #bfbfbf;
+  display: block;
+  padding: 12px;
+  border-radius: 25px;
+  margin: auto;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) {
+  .logo {
+    max-width: 30%;
+  }
   #container .carte {
+    max-width: 40%;
+  }
+  .containerproduit .image {
+    max-width: 50%;
+  }
+  .containerproduit .info {
     max-width: 40%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  #container .carte {
+  .logo {
     max-width: 25%;
+  }
+  #container .carte {
+    max-width: 27%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    max-width: 20%;
   }
 }
 /*# sourceMappingURL=main.css.map */
