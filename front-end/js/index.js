@@ -7,14 +7,14 @@
 //Fonction qui permet de récupérer les produits dans l'API
 
 function getProducts() {
-  //Je déclare l'URL de l'API, j'utilise fetch
+  //Décaration de l'URL de l'API avec fetch
 
   return (
     fetch("http://localhost:3000/api/teddies/")
       //Les promesses
 
-      .then(function (httpBodyResponse) {
-        return httpBodyResponse.json();
+      .then(function (data) {
+        return data.json();
       })
 
       .then(function (products) {
@@ -28,6 +28,8 @@ function getProducts() {
       })
   );
 }
+
+//Affichage des produits dynamiquement
 
 function displayProducts(products) {
   // console.log(products);
@@ -59,5 +61,3 @@ function displayProducts(products) {
     // console.log(produit._id);
   });
 }
-
-// href="produit.html?id=${produit._id}"
