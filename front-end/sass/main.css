@@ -40,7 +40,7 @@ header {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 ul {
@@ -146,6 +146,7 @@ footer {
 }
 
 .containerproduit .info .titre {
+  font-size: 1.5rem;
   display: block;
   margin: auto;
   text-align: center;
@@ -157,12 +158,24 @@ footer {
   margin: 10%;
 }
 
+.containerproduit .info select {
+  display: block;
+  margin: auto;
+}
+
+.containerproduit .info .quantite {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  margin: auto;
+}
+
 .containerproduit .info .price {
   text-align: center;
   padding: 5%;
 }
 
-.containerproduit .info .addtocart {
+.containerproduit .info .btn-add-to-cart {
   background-color: #bae0f7;
   border-style: none;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
@@ -171,6 +184,32 @@ footer {
   padding: 12px;
   border-radius: 25px;
   margin: auto;
+  cursor: pointer;
+}
+
+#formulairepanier {
+  max-width: 90%;
+  margin: 1.2rem auto;
+}
+
+#formulairepanier .forminfo {
+  padding: 0.5rem;
+}
+
+#formulairepanier .validercommande {
+  display: block;
+  margin: 1.4rem auto 2rem auto;
+  width: 12rem;
+  background-color: #bae0f7;
+  padding: 12px;
+  border-radius: 25px;
+  -webkit-box-shadow: 3px 3px 10px #bfbfbf;
+          box-shadow: 3px 3px 10px #bfbfbf;
+  font-size: 0.9rem;
+  border-style: none;
+}
+
+#formulairepanier .validercommande:hover {
   cursor: pointer;
 }
 

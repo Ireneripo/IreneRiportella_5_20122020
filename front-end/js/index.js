@@ -1,3 +1,4 @@
+//IIFE (Immediately Invoked Function Expression)
 (async function () {
   const products = await getProducts();
 
@@ -37,7 +38,9 @@ function displayProducts(products) {
     // console.log(produit);
     const container = document.querySelector("#container");
     const price = produit.price / 100 + " €";
-    container.innerHTML += `<div class="carte">
+    container.insertAdjacentHTML(
+      "beforeend",
+      `<div class="carte">
     <img class="image" src="${produit.imageUrl}" alt="image d'un ourson">
     <div class="content">
       <h3 class="titre">${produit.name}</h3>
@@ -47,17 +50,9 @@ function displayProducts(products) {
         <a href="produit.html?id=${produit._id}" "button="click" class="btn">Voir produit</a>
       </div>
     </div>
-  </div>`;
+  </div>`
+    );
+
     // console.log(container);
-
-    //Ècoute de l'événement (click) pour que l'utilisateur sélectionne son produit et redirection vers la page produit
-
-    // const btn = document.querySelector(".btn");
-
-    // btn.addEventListener("click", function () {
-    //   btn.href = "./produit.html?id=" + produit._id;
-    //   btn.href = `./produit.html?id=${produit._id}`;
-    // });
-    // console.log(produit._id);
   });
 }

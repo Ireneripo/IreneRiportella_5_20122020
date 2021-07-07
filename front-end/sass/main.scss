@@ -34,7 +34,7 @@ header {
 }
 .panier {
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 ul {
   list-style-type: none;
@@ -114,6 +114,7 @@ footer {
   & .info {
     padding-top: 10%;
     & .titre {
+      font-size: 1.5rem;
       display: block;
       margin: auto;
       text-align: center;
@@ -123,17 +124,19 @@ footer {
       font-size: 0.8rem;
       margin: 10%;
     }
-    // & #couleur {
-    //   // margin: 0;
-    // }
-    // & #quantite {
-    //   // margin: 0;
-    // }
+    & select {
+      display: block;
+      margin: auto;
+    }
+    & .quantite {
+      max-width: max-content;
+      margin: auto;
+    }
     & .price {
       text-align: center;
       padding: 5%;
     }
-    & .addtocart {
+    & .btn-add-to-cart {
       background-color: #bae0f7;
       border-style: none;
       box-shadow: 3px 3px 10px #bfbfbf;
@@ -141,6 +144,27 @@ footer {
       padding: 12px;
       border-radius: 25px;
       margin: auto;
+      cursor: pointer;
+    }
+  }
+}
+#formulairepanier {
+  max-width: 90%;
+  margin: 1.2rem auto;
+  & .forminfo {
+    padding: 0.5rem;
+  }
+  & .validercommande {
+    display: block;
+    margin: 1.4rem auto 2rem auto;
+    width: 12rem;
+    background-color: #bae0f7;
+    padding: 12px;
+    border-radius: 25px;
+    box-shadow: 3px 3px 10px #bfbfbf;
+    font-size: 0.9rem;
+    border-style: none;
+    &:hover {
       cursor: pointer;
     }
   }
