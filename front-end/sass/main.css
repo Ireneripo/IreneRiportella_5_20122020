@@ -20,15 +20,9 @@ a {
   color: black;
 }
 
-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#header {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(-10%, #ffb3f0), color-stop(10%, #f3e9f1));
   background: linear-gradient(360deg, #ffb3f0 -10%, #f3e9f1 10%);
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   padding: 2% 7%;
 }
 
@@ -36,11 +30,79 @@ header {
   max-width: 45%;
 }
 
-.panier {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  font-size: 1.8rem;
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sous-menu {
+  position: relative;
+}
+
+.sous-menu #cart {
+  display: none;
+}
+
+.sous-menu #cart .u-full-width {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.sous-menu #cart th {
+  font-weight: bolder;
+}
+
+.sous-menu #cart th,
+.sous-menu #cart td {
+  padding: 5px 7px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.sous-menu #cart th:first-child,
+.sous-menu #cart td:first-child {
+  padding-left: 0;
+}
+
+.sous-menu #cart th:last-child,
+.sous-menu #cart td:last-child {
+  padding-right: 0;
+}
+
+.sous-menu #cart #empty-cart {
+  padding: 3%;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  -webkit-box-shadow: 3px 3px 10px #bfbfbf;
+          box-shadow: 3px 3px 10px #bfbfbf;
+}
+
+.sous-menu:hover #cart {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  background-color: white;
+  padding: 20px;
+  min-height: 300px;
+  min-width: 500px;
+  max-width: 100%;
+}
+
+.carticon {
+  font-size: 8vmin;
+  margin-top: 60%;
+  padding: 25%;
 }
 
 ul {

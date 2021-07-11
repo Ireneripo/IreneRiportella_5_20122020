@@ -28,17 +28,48 @@
     </style> -->
   </head>
   <body>
-    <header>
-      <a href="./index.html">
-        <img src="/front-end/images/logo.png" alt="logo" class="logo" />
-      </a>
-      <div class="panier">
-        <a href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
+    <header id="header" class="header">
+      <div class="container">
+        <div class="row">
+          <div class="four columns">
+            <a href="./index.html">
+              <img src="/front-end/images/logo.png" alt="logo" class="logo" />
+            </a>
+          </div>
+          <div class="two columns u-pull-right">
+            <ul>
+              <li class="sous-menu">
+                <a href="./panier.html"
+                  ><i class="fas fa-shopping-cart carticon"></i
+                ></a>
+                <div class="panier">
+                  <div id="cart">
+                    <table id="liste-panier" class="u-full-width">
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Titre</th>
+                          <th>Prix</th>
+                          <th>Quantité</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+
+                    <a href="#" id="empty-cart" class="button u-full-width"
+                      >Vider mon panier</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
 
     <div id="containerproduit"></div>
-    <form action=""></form>
 
     <footer>
       <ul>

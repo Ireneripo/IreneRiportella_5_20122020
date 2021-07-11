@@ -48,6 +48,7 @@ function displayProducts(products) {
       <div class="bottom-carte">
         <h4 class="prix">${price}</h4>
         <a href="produit.html?id=${produit._id}" "button="click" class="btn">Voir produit</a>
+      
       </div>
     </div>
   </div>`
