@@ -28,12 +28,19 @@ const contact = {
 loadEventListeners();
 function loadEventListeners() {
   //Supprimer des éléments du panier
-  // cart.addEventListener("click", removeProduct);
+  cart.addEventListener("click", removeProduct);
 
   //Vider le panier
   emptyCartBtn.addEventListener("click", () => {
     // console.log("panier vide");
     copyOfProductsCart = []; //Reset panier
+
+    const tableCart = document.querySelector(".container-panier");
+    tableCart.innerHTML = "";
+    tableCart.insertAdjacentHTML(
+      "beforeend",
+      `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`
+    );
 
     emptyProductLine(); //Supprime tout le HTML du panier
     localStorage.clear(); //Vide le localStorage
@@ -72,33 +79,34 @@ const createProductLine = (product, quantity) => {
   <td>${product.name}</td>
   <td>${price}</td>
   <td>${quantity}</td>
-  <td><button class="btn-delete-teddy" data-id="${product.id}"><i class="fas fa-trash-alt"></i></button></td>`;
+  <td><button class="btn-delete-teddy"><i class="btn-delete-teddy fas fa-trash-alt data-id="${product.id}""></i></button></td>`;
 
   return row;
 };
+
 displayProductsFromLocalStorage();
 
 //Supprimer un élément du panier
 
-// //Sélection des boutons "supprimer-teddy" (icone poubelle)
-// let btnDeleteProduct = document.querySelectorAll(".btn-delete-teddy");
-// console.log(btnDeleteProduct);
+function removeProduct(e) {
+  console.log("teddy supprimé");
+  if (e.target.classList.contains("btn-delete-teddy")) {
+    const teddyId = e.target.getAttribute("data-id");
 
-// for (let i = 0; i < btnDeleteProduct.length; i++) {
-//   btnDeleteProduct[i].addEventListener("click", (e) => {
-//     e.preventDefault();
+    //Supprime l'élément sélectionné du tableau copyOfProductsCart selon le data-id
+    copyOfProductsCart = copyOfProductsCart.filter(
+      (storageProduct) => storageProduct.id !== teddyId
+    );
+    localStorage.removeItem("teddyId");
+    console.log(copyOfProductsCart);
 
-//     //Sélection de l'ID qui va ètre supprimé en cliquant sur le button
-//     let getId = copyOfProductsCart[i].id;
-//     console.log(getId);
-
-//     //Avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément où le btnDeleteProduct a été cliqué
-//     copyOfProductsCart = copyOfProductsCart.filter((el) => el.id == id);
-//   });
-// }
+    // createProductLine();
+  }
+}
 
 // function removeProduct(e) {
 //   console.log("teddy supprimé");
+//   console.log(e.target);
 //   if (e.target.classList.contains("btn-delete-teddy")) {
 //     const teddyId = e.target.getAttribute("data-id");
 
@@ -120,7 +128,8 @@ function emptyProductLine() {
   }
 }
 
-//Calcul total du panier
+//********Calcul total du panier********
+
 //Déclaration de la variable pour pouvoir y mettre les prix présents dand le panier
 let totalCart = [];
 
@@ -131,21 +140,24 @@ for (let i = 0; i < copyOfProductsCart.length; i++) {
 
   //Mettre les prix du panier dans la variable totalCart
   totalCart.push(productsCartPrice);
-  console.log(totalCart);
+  // console.log(totalCart);
 }
-//Additionner les prix qu'il y a dans le tableau de la variable totalCart avec la méthode reduce
+
+//Addition des prix qu'il y a dans le tableau de la variable totalCart avec la méthode reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPrice = totalCart.reduce(reducer, 0);
-console.log(totalPrice);
+// console.log(totalPrice);
 
 //Injection HTML dans la page panier
-const table = document.querySelector("table");
-table.insertAdjacentHTML(
+const tableCart = document.querySelector("#cart");
+
+tableCart.insertAdjacentHTML(
   "beforeend",
+
   `<div class="display-price-html">Total : ${totalPrice} €</div>`
 );
 
-//Validation et envoi du formulaire de commande
+//********Validation et envoi du formulaire de commande********
 
 form.addEventListener("submit", function (e) {
   let messages = [];

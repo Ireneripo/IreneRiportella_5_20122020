@@ -62,6 +62,7 @@ loadEventListeners();
 function loadEventListeners() {
   //Lorsque on ajoute un teddy au panier en cliquant sur le bouton "Ajouter au panier"
   containerProduit.addEventListener("click", addTeddy);
+  // containerProduit.addEventListener("DOMContentLoaded", showProductQuantity);
 
   // //Supprimer des éléments du panier
   // cart.addEventListener("click", removeProduct);
@@ -179,110 +180,23 @@ function syncUpStorage() {
   localStorage.setItem("cart", JSON.stringify(productsCart));
 }
 
-showProductQuantity();
-function showProductQuantity() {
-  const cartIcon = document.querySelector(".carticon");
+// function getTotalQuantityInCart(productsCart) {
+//   let productsInCart = [];
+//   productsCart.forEach((product) => {
+//     productsInCart = produc.quantity;
+//     console.log(productsInCart);
+//   });
+// }
+// function showProductQuantity() {
+//   const cartIcon = document.querySelector(".carticon");
 
-  cartIcon.insertAdjacentHTML("beforeend", `<p>TOTAL CART</>`);
-}
+//   cartIcon.insertAdjacentHTML("beforeend", `<p>TEST</>`);
+// }
 
 //Supprimer les teddies du tbody
 // function emptyHTML() {
 //   // listePanier.innerHTML = "";
 //   while (listePanier.firstChild) {
 //     listePanier.removeChild(listePanier.firstChild);
-//   }
-// }
-
-//Ajout du produit au panier
-
-//Ajout du produit au panier
-// function addCartBtn() {
-//   const btnAddToCart = document.querySelector(".btn-add-to-cart");
-//   console.log(btnAddToCart);
-//   btnAddToCart.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     addToCart();
-//   });
-//   function addToCart() {
-//     let localCart = localStorage.getItem("selectedProduct");
-//     if (localCart == null) {
-//       localCart = { [productId]: 0 };
-//     } else {
-//       localCart = JSON.parse(localCart);
-//     }
-
-//     const quantity = document.querySelector("#quantity").value;
-//     console.log(quantity);
-//     localCart[productId] += +quantity;
-
-//     localStorage.setItem("selectedProduct", JSON.stringify(localCart));
-//   }
-// }
-
-// //Ajout du produit au panier
-// function addCartBtn() {
-//   const btnAddToCart = document.querySelector(".btn-add-to-cart");
-//   console.log(btnAddToCart);
-//   btnAddToCart.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     addToCart();
-//   });
-//   function addToCart() {
-//     let localCart = localStorage.getItem("selectedProduct");
-//     if (localCart == null) {
-//       localCart = { [productId]: 0 };
-//     } else {
-//       localCart = JSON.parse(localCart);
-//     }
-//     const quantity = document.querySelector("#quantity").value;
-//     console.log(quantity);
-//     localCart[productId] += +quantity;
-//     localStorage.setItem("selectedProduct", JSON.stringify(localCart));
-//   }
-// }
-
-// // Ajout du produit au panier
-
-// function addToCart() {
-//   let localCart = localStorage.getItem("selectedProduct");
-//   console.log(localCart);
-//   if (localCart === null) {
-//     localCart = { [productId]: 0 };
-//   } else {
-//     localCart = JSON.parse(localCart);
-//   }
-//   console.log(localCart);
-//   const quantity = document.querySelector("#quantity").value;
-//   console.log(quantity);
-//   localCart[productId] += +quantity;
-
-//   localStorage.setItem("selectedProduct", JSON.stringify(localCart));
-// }
-
-// function addCartBtn() {
-//   const btnAddToCart = document.querySelector(".btn-add-to-cart");
-//   console.dir(btnAddToCart);
-//   btnAddToCart.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     addToCart();
-//   });
-// }
-
-// //Ajout du produit au panier
-// let localCart = [];
-// function addToCart() {
-//   let productsInCart = localStorage.getItem("productsInCart");
-//   localCart = JSON.parse(productsInCart);
-//   if (productsInCart) {
-//     let quantity = document.querySelector("#quantity").value;
-
-//     //if the Teddy has not already been added
-//     if (!productsInCart.includes(productId)) {
-//       productsInCart.productId = 0;
-//     } else {
-//       productsInCart.productId += +quantity;
-//       localStorage.setItem("selectedProduct", JSON.stringify(localCart));
-//     }
 //   }
 // }
