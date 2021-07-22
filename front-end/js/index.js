@@ -34,20 +34,20 @@ function getProducts() {
 
 function displayProducts(products) {
   // console.log(products);
-  products.forEach(function (produit) {
-    // console.log(produit);
+  products.forEach(function (product) {
+    // console.log(product);
     const container = document.querySelector("#container");
-    const price = produit.price / 100 + " €";
+    const price = product.price / 100 + " €";
     container.insertAdjacentHTML(
       "beforeend",
       `<div class="carte">
-    <img class="image" src="${produit.imageUrl}" alt="image d'un ourson">
+    <img class="image" src="${product.imageUrl}" alt="image d'un ourson">
     <div class="content">
-      <h3 class="titre">${produit.name}</h3>
-      <p class="description">${produit.description}</p>
+      <h3 class="titre">${product.name}</h3>
+      <p class="description">${product.description}</p>
       <div class="bottom-carte">
-        <h4 class="prix">${price}</h4>
-        <a href="produit.html?id=${produit._id}" "button="click" class="btn">Voir produit</a>
+        <h4 class="price">${price}</h4>
+        <a href="produit.html?id=${product._id}" "button="click" class="btn">Voir produit</a>
       
       </div>
     </div>

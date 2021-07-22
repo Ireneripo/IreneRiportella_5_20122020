@@ -21,15 +21,78 @@
     />
   </head>
   <body>
-    <header>
+    <header id="header" class="header">
       <a href="./index.html">
         <img src="/front-end/images/logo.png" alt="logo" class="logo" />
       </a>
-      <div class="panier">
-        <a href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
-      </div>
+      <i class="fas fa-shopping-cart carticon"><a href="./panier.html"></a></i>
     </header>
-    <div id="formulairepanier"></div>
+
+    <div class="container-panier">
+      <div class="row">
+        <div class="u-pull-right">
+          <ul>
+            <li class="sub-menu-panier">
+              <div class="total-panier">
+                <div id="cart">
+                  <table id="liste-panier" class="u-full-width">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Titre</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+
+                  <a href="#" id="empty-cart-gohome" class="button u-full-width"
+                    >Vider mon panier</a
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form action="" method="post" id="order-form">
+        <div class="forminfo">
+          <label for="firstname">Prénom : </label>
+          <input type="text" name="firstname" id="firstname" required />
+        </div>
+        <div class="forminfo">
+          <label for="lastname">Nom : </label>
+          <input type="text" name="lastname" id="lastname" />
+        </div>
+        <div class="forminfo">
+          <label for="address">Adresse : </label>
+          <input type="text" name="address" id="address" />
+        </div>
+        <div class="forminfo">
+          <label for="postcode">Code Postal : </label>
+          <input type="text" name="postcode" id="postcode" />
+        </div>
+        <div class="forminfo">
+          <label for="city">Ville : </label>
+          <input type="text" name="city" id="city" />
+        </div>
+        <div class="forminfo">
+          <label for="email">Email : </label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div id="error"></div>
+        <div class="formsubmit">
+          <button type="submit" id="validate-order" class="validate-order">
+            Valider ma commande
+          </button>
+        </div>
+      </form>
+    </div>
 
     <footer>
       <ul>

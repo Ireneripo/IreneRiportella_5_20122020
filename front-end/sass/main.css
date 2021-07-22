@@ -21,6 +21,12 @@ a {
 }
 
 #header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(-10%, #ffb3f0), color-stop(10%, #f3e9f1));
   background: linear-gradient(360deg, #ffb3f0 -10%, #f3e9f1 10%);
   padding: 2% 7%;
@@ -31,78 +37,64 @@ a {
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.sous-menu {
-  position: relative;
-}
-
-.sous-menu #cart {
-  display: none;
-}
-
-.sous-menu #cart .u-full-width {
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.sous-menu #cart th {
-  font-weight: bolder;
-}
-
-.sous-menu #cart th,
-.sous-menu #cart td {
-  padding: 5px 7px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-}
-
-.sous-menu #cart th:first-child,
-.sous-menu #cart td:first-child {
-  padding-left: 0;
-}
-
-.sous-menu #cart th:last-child,
-.sous-menu #cart td:last-child {
-  padding-right: 0;
-}
-
-.sous-menu #cart #empty-cart {
-  padding: 3%;
   margin: auto;
-  margin-top: 20px;
+}
+
+.container-panier {
+  margin: auto;
+}
+
+.container-panier #liste-panier {
+  width: 95%;
+  margin: 3vmax auto;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.container-panier #liste-panier th,
+.container-panier #liste-panier tr {
+  text-align: center;
+  padding-bottom: 5%;
+  border-bottom: 1px solid #c0bfbf;
+}
+
+.container-panier #liste-panier td {
+  margin: 4%;
+  border-bottom: 1px solid #c0bfbf;
+}
+
+.container-panier #liste-panier td img {
+  margin: 6% 0;
+  width: 32vmin;
+}
+
+.container-panier #liste-panier td .btn-delete-teddy {
+  border: none;
+  cursor: pointer;
+}
+
+.container-panier #empty-cart-gohome {
+  font-size: 1rem;
+  width: 15rem;
+  padding: 12px;
+  margin: auto;
   display: block;
   text-align: center;
-  background-color: #f2f2f2;
-  border-radius: 15px;
+  background-color: #cccccc;
+  border-radius: 25px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
 }
 
-.sous-menu:hover #cart {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  z-index: 1;
-  background-color: white;
-  padding: 20px;
-  min-height: 300px;
-  min-width: 500px;
-  max-width: 100%;
+.display-price-html {
+  text-align: right;
 }
 
 .carticon {
-  font-size: 8vmin;
-  margin-top: 60%;
-  padding: 25%;
+  font-size: 6.5vmin;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 ul {
@@ -145,7 +137,7 @@ ul {
   text-align: center;
 }
 
-#container .carte .content .titre {
+#container .carte .content .title {
   margin: 15px;
   font-size: 1.15rem;
 }
@@ -155,7 +147,7 @@ ul {
   font-size: 0.8rem;
 }
 
-#container .carte .content .prix {
+#container .carte .content .price {
   padding: 10px;
   font-size: 0.9rem;
 }
@@ -201,13 +193,10 @@ footer {
   border-radius: 15px;
   max-width: 100%;
   margin: auto;
+  margin-bottom: 8%;
 }
 
-.containerproduit .info {
-  padding-top: 10%;
-}
-
-.containerproduit .info .titre {
+.containerproduit .info .title {
   font-size: 1.5rem;
   display: block;
   margin: auto;
@@ -225,7 +214,7 @@ footer {
   margin: auto;
 }
 
-.containerproduit .info .quantite {
+.containerproduit .info .quantity {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -249,30 +238,47 @@ footer {
   cursor: pointer;
 }
 
-#formulairepanier {
+#order-form {
   max-width: 90%;
   margin: 1.2rem auto;
 }
 
-#formulairepanier .forminfo {
+#order-form .forminfo {
   padding: 0.5rem;
 }
 
-#formulairepanier .validercommande {
-  display: block;
-  margin: 1.4rem auto 2rem auto;
-  width: 12rem;
-  background-color: #bae0f7;
+#order-form .forminfo input {
+  width: 100%;
+  padding: 1%;
+}
+
+#order-form :nth-child(6) {
+  margin-bottom: 20px;
+}
+
+#order-form #validate-order {
+  font-size: 1rem;
+  border-style: none;
+  width: 15rem;
   padding: 12px;
+  margin: auto;
+  margin-bottom: 10%;
+  display: block;
+  text-align: center;
+  background-color: #bae0f7;
   border-radius: 25px;
   -webkit-box-shadow: 3px 3px 10px #bfbfbf;
           box-shadow: 3px 3px 10px #bfbfbf;
-  font-size: 0.9rem;
-  border-style: none;
 }
 
-#formulairepanier .validercommande:hover {
+#order-form #validate-order:hover {
   cursor: pointer;
+}
+
+#error {
+  text-align: center;
+  color: red;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 600px) {
