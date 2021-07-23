@@ -259,6 +259,15 @@ footer {
     }
   }
 }
+.order-summary {
+  font-size: 1.5rem;
+  width: 80vw;
+  margin: 20% auto;
+  & p {
+    margin: 5%;
+    text-align: center;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .logo {

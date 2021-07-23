@@ -21,14 +21,16 @@
     />
   </head>
   <body>
-    <header>
+    <header id="header" class="header">
       <a href="./index.html">
         <img src="/front-end/images/logo.png" alt="logo" class="logo" />
       </a>
-      <div class="panier">
-        <a href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
-      </div>
+      <a href="./panier.html"><i class="fas fa-shopping-cart carticon"></i></a>
     </header>
+    <div class="order-summary">
+      <p>Merci !</p>
+      <p>Votre commande numéro XXXXXX a bien été prise en compte.</p>
+    </div>
 
     <footer>
       <ul>
@@ -38,6 +40,7 @@
       </ul>
     </footer>
 
+    <!-- <script src="../js/panier.js"></script> -->
     <script src="../js/confirmation.js"></script>
   </body>
 </html>

@@ -28,7 +28,6 @@ const contact = {
 loadEventListeners();
 function loadEventListeners() {
   //Supprimer des éléments du panier
-  cart.addEventListener("click", removeProduct);
 
   //Vider le panier
   emptyCartBtn.addEventListener("click", () => {
@@ -55,7 +54,6 @@ function displayProductsFromLocalStorage() {
       const row = createProductLine(product, storageProduct.quantity);
       listePanier.appendChild(row);
     });
-    //Ajouter le HTML du panier dans le tbody
   });
 }
 
@@ -74,12 +72,16 @@ const getProductById = async (productId) => {
 const createProductLine = (product, quantity) => {
   const price = product.price / 100 + " €";
   const row = document.createElement("tr");
+
   row.innerHTML = `
   <td><img src="${product.imageUrl}"></td>
   <td>${product.name}</td>
   <td>${price}</td>
   <td>${quantity}</td>
-  <td><button class="btn-delete-teddy"><i class="btn-delete-teddy fas fa-trash-alt data-id="${product.id}""></i></button></td>`;
+  <td><button class="btn-delete-teddy"><i class="btn-delete-teddy fas fa-trash-alt" ></i></button></td>`;
+
+  row.setAttribute("data-id", product._id);
+  row.addEventListener("click", removeProduct);
 
   return row;
 };
@@ -91,34 +93,27 @@ displayProductsFromLocalStorage();
 function removeProduct(e) {
   console.log("teddy supprimé");
   if (e.target.classList.contains("btn-delete-teddy")) {
-    const teddyId = e.target.getAttribute("data-id");
+    console.log(e.target);
 
+    const parent = e.target.parentElement.parentElement.parentElement;
+    console.log(parent);
+
+    const teddyId = parent.getAttribute("data-id");
+    console.log(teddyId);
     //Supprime l'élément sélectionné du tableau copyOfProductsCart selon le data-id
     copyOfProductsCart = copyOfProductsCart.filter(
       (storageProduct) => storageProduct.id !== teddyId
     );
-    localStorage.removeItem("teddyId");
+
+    parent.remove();
+
     console.log(copyOfProductsCart);
+
+    // localStorage.setItem("cart", JSON.stringify(copyOfProductsCart));
 
     // createProductLine();
   }
 }
-
-// function removeProduct(e) {
-//   console.log("teddy supprimé");
-//   console.log(e.target);
-//   if (e.target.classList.contains("btn-delete-teddy")) {
-//     const teddyId = e.target.getAttribute("data-id");
-
-//     //Supprimer du tableau copyOfProductsCart selon le data-id
-//     copyOfProductsCart = copyOfProductsCart.filter(
-//       (storageProduct) => storageProduct.id !== teddyId
-//     );
-
-//     localStorage.removeItem("teddyId");
-//     // cartHTML(); //Itère sur le panier et montre le HTML
-//   }
-// }
 
 //Supprimer les teddies du tbody
 function emptyProductLine() {
@@ -131,6 +126,7 @@ function emptyProductLine() {
 //********Calcul total du panier********
 
 //Déclaration de la variable pour pouvoir y mettre les prix présents dand le panier
+
 let totalCart = [];
 
 //Je récupère les prix dans le panier
@@ -160,6 +156,7 @@ tableCart.insertAdjacentHTML(
 //********Validation et envoi du formulaire de commande********
 
 form.addEventListener("submit", function (e) {
+  e.preventDefault();
   let messages = [];
 
   const emailRegex =
@@ -178,40 +175,45 @@ form.addEventListener("submit", function (e) {
   if (
     postcode.value === "" ||
     postcode.value == null ||
-    postcodeRegex.test(postcode)
+    !postcodeRegex.test(postcode.value)
   ) {
     messages.push("Code postal invalide");
   }
   if (city.value === "" || city.value == null) {
     messages.push("Ville invalide");
   }
-  if (email.value === "" || email.value == null || emailRegex.test(email)) {
+  if (
+    email.value === "" ||
+    email.value == null ||
+    !emailRegex.test(email.value)
+  ) {
     messages.push("Email invalide");
   }
   if (messages.length > 0) {
     e.preventDefault();
     error.innerText = messages.join(" - ");
+    return;
   }
 
-  let customerData = new FormData(this);
+  let contact = new FormData(this);
+  console.log(contact);
 
-  console.log(customerData.get("firstname"));
-  console.log(customerData.get("lastname"));
-  console.log(customerData.get("address"));
-  console.log(customerData.get("postcode"));
-  console.log(customerData.get("city"));
-  console.log(customerData.get("email"));
+  console.log(contact.get("firstname"));
+  console.log(contact.get("lastname"));
+  console.log(contact.get("address"));
+  console.log(contact.get("postcode"));
+  console.log(contact.get("city"));
+  console.log(contact.get("email"));
 
-  fetch("http://localhost:3000/api/teddies/order", {
-    method: "POST",
-    body: JSON.stringify(customerData),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  // fetch("http://localhost:3000/api/teddies/order", {
+  //   method: "POST",
+  //   body: JSON.stringify(contact),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
   // .then((response) => response.json())
   // .then((data) => {
   //   console.log(data);
-  //   if...
   // });
 });
