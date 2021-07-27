@@ -133,6 +133,7 @@ function lireInfosTeddy() {
     const teddies = productsCart.map((product) => {
       if (product.id === infoTeddy.id) {
         product.quantity++;
+
         return product; //Retourne le produit avec la quantité mise à jour
       } else {
         return product; //Retourne les produits qui n'étaient pas déjà dans le panier
