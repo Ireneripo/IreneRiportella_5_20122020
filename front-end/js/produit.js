@@ -1,5 +1,3 @@
-// export { productsCart };
-
 //Déclaration des variables
 let params = new URL(window.location).searchParams;
 let productId = params.get("id");
@@ -7,7 +5,7 @@ const cart = document.querySelector("#cart");
 const listePanier = document.querySelector("#liste-panier tbody");
 const emptyCartBtn = document.querySelector("#empty-cart");
 const containerProduit = document.querySelector("#containerproduit");
-let productsCart = [];
+let productsCart = {};
 
 //Récupération de l'ID de l'ourson de la page
 
@@ -69,7 +67,7 @@ function loadEventListeners() {
 
   //Montrer les teddies du localStorage
   document.addEventListener("DOMContentLoaded", () => {
-    productsCart = JSON.parse(localStorage.getItem("cart")) || [];
+    productsCart = JSON.parse(localStorage.getItem("cart")) || {};
 
     // cartHTML();
   });
@@ -114,35 +112,18 @@ function addTeddy(e) {
 function lireInfosTeddy() {
   // console.log(teddy);
 
-  //Création d'un objet avec le contenu du teddy sélectionné
-  const infoTeddy = {
-    image: document.querySelector(".image").src,
-    title: document.querySelector(".title").textContent,
-    price: parseInt(document.querySelector(".price").textContent, 10),
-    id: productId,
-    quantity: parseInt(document.querySelector("#quantity").value, 10),
-  };
+  const quantity = parseInt(document.querySelector("#quantity").value, 10);
 
   //Vérifier si un élément existe déjà dans le panier
-  const alreadyInCart = productsCart.some(
-    (product) => product.id === infoTeddy.id
-  );
+  let productInCart = productsCart[productId];
 
-  if (alreadyInCart) {
+  if (productInCart) {
     //Mettre à jour la quantité
-    const teddies = productsCart.map((product) => {
-      if (product.id === infoTeddy.id) {
-        product.quantity++;
 
-        return product; //Retourne le produit avec la quantité mise à jour
-      } else {
-        return product; //Retourne les produits qui n'étaient pas déjà dans le panier
-      }
-    });
-    productsCart = [...teddies];
+    productsCart[productId] = productInCart + quantity;
   } else {
     //Ajouter teddys au tableau panier
-    productsCart = [...productsCart, infoTeddy]; //Je récupère mon panier précédent (vide ou avec un produit ajouté précédement)
+    productsCart[productId] = quantity;
   }
 
   console.log(productsCart);

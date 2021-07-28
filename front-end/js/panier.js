@@ -24,7 +24,7 @@ function loadEventListeners() {
   //Vider le panier
   emptyCartBtn.addEventListener("click", () => {
     // console.log("panier vide");
-    copyOfProductsCart = []; //Reset panier
+    copyOfProductsCart = {}; //Reset panier
 
     tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
 
@@ -39,9 +39,12 @@ function loadEventListeners() {
 //Montrer les produits stockés dans le localStorage
 
 function displayProductsFromLocalStorage() {
-  copyOfProductsCart.forEach((storageProduct) => {
-    getProductById(storageProduct.id).then((product) => {
-      const row = createProductLine(product, storageProduct.quantity);
+  Object.entries(copyOfProductsCart).forEach(([id, quantity]) => {
+    getProductById(id).then((product) => {
+      //FAIRE FONCTION POUR AUGMENTER LA QUANTITE
+      //ENVOYER EN PAREMETRE LA QUANTITE ET LE PRIX POUR MODIFIER TOTAL PRICE
+
+      const row = createProductLine(product, quantity);
       listePanier.appendChild(row);
     });
   });
@@ -90,18 +93,15 @@ function removeProduct(e) {
 
     const teddyId = parent.getAttribute("data-id");
     // console.log(teddyId);
+
     //Supprime l'élément sélectionné du tableau copyOfProductsCart selon le data-id
-    copyOfProductsCart = copyOfProductsCart.filter(
-      (storageProduct) => storageProduct.id !== teddyId
-    );
+    delete copyOfProductsCart[teddyId];
 
     parent.remove();
 
     // console.log(copyOfProductsCart);
 
     localStorage.setItem("cart", JSON.stringify(copyOfProductsCart));
-
-    // createProductLine();
   }
   totalCart();
 }
@@ -114,6 +114,8 @@ function totalCart() {
   let totalCart = [];
 
   //Je récupère les prix dans le panier
+  copyOfProductsCart;
+
   for (let i = 0; i < copyOfProductsCart.length; i++) {
     let productsCartPrice =
       copyOfProductsCart[i].price * copyOfProductsCart[i].quantity;
@@ -168,7 +170,7 @@ function totalCart() {
 // }
 
 //********Validation et envoi du formulaire de commande********
-validateForm();
+
 function validateForm() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -236,8 +238,10 @@ function sendOrder() {
 
   //Création d'un tableau régroupant les id des teddies sélectionnés
   let products = [];
-  copyOfProductsCart.forEach((storageProduct) => {
-    products.push(storageProduct.id);
+  Object.entries(copyOfProductsCart).forEach(([id, quantity]) => {
+    for (let i = 0; i < quantity; i++) {
+      products.push(id);
+    }
   });
   console.log(products);
 
@@ -256,7 +260,7 @@ function sendOrder() {
       localStorage.setItem("totalPrice", totalPrice);
       // window.location.href = "./confirmation.html";
     })
-    .catch((error) => {
+    .catch(() => {
       if (!response.ok) {
         throw new Error(
           "Nous avons rencontré un souci lors de votre commande, merci de revenir ultérieurement."
