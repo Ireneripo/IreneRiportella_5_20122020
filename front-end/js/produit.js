@@ -1,6 +1,10 @@
 //Déclaration des variables
 let params = new URL(window.location).searchParams;
 let productId = params.get("id");
+console.log(productId);
+
+let productPrice = params.get("price");
+
 const cart = document.querySelector("#cart");
 const listePanier = document.querySelector("#liste-panier tbody");
 const emptyCartBtn = document.querySelector("#empty-cart");

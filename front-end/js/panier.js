@@ -8,6 +8,11 @@ let copyOfProductsCart = JSON.parse(localStorage.getItem("cart"));
 const tableEmptyCart = document.querySelector(".container-panier");
 const validateOrderBtn = document.querySelector("#validate-order");
 let totalPrice = 0;
+let priceProductInCart = document.querySelector(".price");
+let quantityProductInCart = document.querySelector(".quantity");
+let price;
+let quantity;
+const productsWithQuantity = [];
 
 //Déclaration des variables du formulaire
 const firstName = document.getElementById("firstname");
@@ -36,18 +41,25 @@ function loadEventListeners() {
   });
 }
 
-//Montrer les produits stockés dans le localStorage
-
-function displayProductsFromLocalStorage() {
+function getProductFromServer() {
+  const promise = new Promise(resolve, reject);
   Object.entries(copyOfProductsCart).forEach(([id, quantity]) => {
     getProductById(id).then((product) => {
-      //FAIRE FONCTION POUR AUGMENTER LA QUANTITE
-      //ENVOYER EN PAREMETRE LA QUANTITE ET LE PRIX POUR MODIFIER TOTAL PRICE
-
-      const row = createProductLine(product, quantity);
-      listePanier.appendChild(row);
+      const productWithQuantity = {
+        ...product,
+        price: product.price / 100,
+        quantity: quantity,
+      };
+      productsWithQuantity.push(productWithQuantity);
     });
   });
+  return promise;
+}
+//Montrer les produits stockés dans le localStorage
+
+function displayProductsAndTotal() {
+  const row = createProductLine(productWithQuantity);
+  listePanier.appendChild(row);
 }
 
 const getProductById = async (productId) => {
@@ -62,15 +74,14 @@ const getProductById = async (productId) => {
   return product;
 };
 
-const createProductLine = (product, quantity) => {
-  const price = product.price / 100 + " €";
+const createProductLine = (product) => {
   const row = document.createElement("tr");
 
   row.innerHTML = `
   <td><img src="${product.imageUrl}"></td>
   <td>${product.name}</td>
-  <td>${price}</td>
-  <td>${quantity}</td>
+  <td class="priceTeddy">${product.price} €</td>
+  <td class="quantity">${product.quantity}</td>
   <td><button class="btn-delete-teddy"><i class="btn-delete-teddy fas fa-trash-alt" ></i></button></td>`;
 
   row.setAttribute("data-id", product._id);
@@ -79,7 +90,8 @@ const createProductLine = (product, quantity) => {
   return row;
 };
 
-displayProductsFromLocalStorage();
+displayProducts();
+displayTotal();
 
 //Supprimer un élément du panier
 
@@ -103,42 +115,59 @@ function removeProduct(e) {
 
     localStorage.setItem("cart", JSON.stringify(copyOfProductsCart));
   }
-  totalCart();
+  // totalCart();
 }
 
+//********Calcul de la quantité totale de produits dans le panier
+// countCart();
+// function countCart() {
+//   let totalCount = 0;
+//   for (let i in copyOfProductsCart) {
+//     totalCount += copyOfProductsCart[i];
+//   }
+
+//   console.log(totalCount);
+// }
+
+// function displayCountCart() {
+//   const itemsInCart = document.querySelector(".carticon");
+//   itemsInCart.insertAdjacentHTML("beforeend", `<p>Test</p>`);
+// }
+
 //********Calcul total du panier********
+
 totalCart();
 function totalCart() {
-  //Déclaration de la variable pour pouvoir y mettre les prix présents dand le panier
-
+  // calcul du total à partir de productsWithQuantity
+  // Ajout du total dans le DOM (innerHtml)
   let totalCart = [];
+  quantity = document.querySelectorAll(".quantity");
+  console.log(quantity);
+  quantity = document.querySelectorAll(".priceTeddy");
+  console.log(price);
 
-  //Je récupère les prix dans le panier
-  copyOfProductsCart;
-
-  for (let i = 0; i < copyOfProductsCart.length; i++) {
-    let productsCartPrice =
-      copyOfProductsCart[i].price * copyOfProductsCart[i].quantity;
-
-    //Mettre les prix du panier dans la variable totalCart
-
-    totalCart.push(productsCartPrice);
-    // console.log(totalCart);
-  }
-
-  //Addition des prix qu'il y a dans le tableau de la variable "totalCart" avec la méthode reduce
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  totalPrice = totalCart.reduce(reducer, 0);
-  // console.log(totalPrice);
-
-  //Injection HTML dans la page panier
-  const tableCart = document.querySelector(".total-price");
-
-  tableCart.innerHTML = `<div class="display-price-html">Total : ${totalPrice} €</div>`;
-
-  if (totalPrice === 0 || copyOfProductsCart === null) {
-    tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
-  }
+  // let totalCart = [];
+  // //Déclaration de la variable pour pouvoir y mettre les prix présents dand le panier
+  // let totalCart = [];
+  // //Je récupère les prix dans le panier
+  // copyOfProductsCart;
+  // for (let i = 0; i < copyOfProductsCart.length; i++) {
+  //   let productsCartPrice =
+  //     copyOfProductsCart[i].price * copyOfProductsCart[i].quantity;
+  //   //Mettre les prix du panier dans la variable totalCart
+  //   totalCart.push(productsCartPrice);
+  //   // console.log(totalCart);
+  // }
+  // //Addition des prix qu'il y a dans le tableau de la variable "totalCart" avec la méthode reduce
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  // totalPrice = totalCart.reduce(reducer, 0);
+  // // console.log(totalPrice);
+  // //Injection HTML dans la page panier
+  // const tableCart = document.querySelector(".total-price");
+  // tableCart.innerHTML = `<div class="display-price-html">Total : ${totalPrice} €</div>`;
+  // if (totalPrice === 0 || copyOfProductsCart === null) {
+  //   tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
+  // }
 }
 
 // function emptyCart() {
@@ -149,24 +178,6 @@ function totalCart() {
 //   ) {
 //     tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
 //   }
-// }
-
-//*******Création d'une fonction pour transformer l'objet contenant les produits en un tableau d'id avec 1 id par valeur de quantité.
-// Le tableau des produits envoyé au backend doit être un array de strings products*/
-
-// productsSummary();
-// function productsSummary() {
-//   // console.log(copyOfProductsCart);
-//   // copyOfProductsCart.forEach((storageProduct) => {
-//   //   let productsInfo = Object.values(storageProduct);
-//   //   console.log(productsInfo);
-//   // });
-//   // console.log(copyOfProductsCart);
-//   let products = [];
-//   copyOfProductsCart.forEach((storageProduct) => {
-//     products.push(storageProduct.id);
-//   });
-//   // console.log(products);
 // }
 
 //********Validation et envoi du formulaire de commande********
