@@ -47,7 +47,7 @@ function displayProducts(products) {
       <p class="description">${product.description}</p>
       <div class="bottom-carte">
         <h4 class="price">${price}</h4>
-        <a href="produit.html?id=${product._id}" "button="click" class="btn">Voir produit</a>
+        <a href="html/produit.html?id=${product._id}" "button="click" class="btn">Voir produit</a>
       
       </div>
     </div>
