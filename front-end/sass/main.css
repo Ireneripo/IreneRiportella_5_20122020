@@ -108,6 +108,30 @@ a {
 .carticon {
   margin-top: 20px;
   font-size: 6.5vmin;
+  position: relative;
+}
+
+.carticon .totalCount {
+  position: absolute;
+  top: 0;
+  left: 55%;
+  background: #1abe1a;
+  font-size: 12px;
+  font-weight: bolder;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  padding: 4px;
 }
 
 ul {
@@ -311,8 +335,8 @@ footer {
 }
 
 .order-summary {
-  font-size: 1.5rem;
-  width: 80vw;
+  font-size: 1.2rem;
+  width: 60vw;
   margin: 20% auto;
 }
 

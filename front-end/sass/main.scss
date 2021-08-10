@@ -90,7 +90,25 @@ a {
 .carticon {
   margin-top: 20px;
   font-size: 6.5vmin;
+  position: relative;
+  & .totalCount {
+    position: absolute;
+    top: 0;
+    left: 55%;
+    background: rgb(26, 190, 26);
+    font-size: 12px;
+    font-weight: bolder;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 4px;
+  }
 }
+
 ul {
   list-style-type: none;
 }
@@ -260,8 +278,8 @@ footer {
   }
 }
 .order-summary {
-  font-size: 1.5rem;
-  width: 80vw;
+  font-size: 1.2rem;
+  width: 60vw;
   margin: 20% auto;
   & p {
     margin: 5%;

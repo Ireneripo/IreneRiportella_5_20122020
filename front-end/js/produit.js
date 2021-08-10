@@ -26,7 +26,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     console.log(error);
   });
 
-//création de la structure HTML du panier
+//Création de la structure HTML du panier
 
 function displayProduct(product) {
   const price = product.price / 100 + " €";
@@ -49,7 +49,6 @@ function displayProduct(product) {
   </div>
 </div>`
   );
-  // console.log(containerProduit);
 
   //Sélection de la couleur du produit
   const colors = product.colors;
@@ -60,33 +59,17 @@ function displayProduct(product) {
   });
 }
 
+//Écoute des événements
 loadEventListeners();
 function loadEventListeners() {
   //Lorsque on ajoute un teddy au panier en cliquant sur le bouton "Ajouter au panier"
   containerProduit.addEventListener("click", addTeddy);
-  // containerProduit.addEventListener("DOMContentLoaded", showProductQuantity);
-
-  // //Supprimer des éléments du panier
-  // cart.addEventListener("click", removeProduct);
 
   //Montrer les teddies du localStorage
   document.addEventListener("DOMContentLoaded", () => {
     productsCart = JSON.parse(localStorage.getItem("cart")) || {};
-
-    // cartHTML();
   });
-
-  //Vider le panier
-  // emptyCartBtn.addEventListener("click", () => {
-  //   // console.log("panier vide");
-  //   productsCart = []; //Reset panier
-
-  //   // emptyHTML(); //Supprime tout le HTML du panier
-  // localStorage.clear(); //Vide le localStorage
-  // });
 }
-
-//Functions
 
 function addTeddy(e) {
   e.preventDefault();
@@ -94,26 +77,12 @@ function addTeddy(e) {
   if (e.target.classList.contains("btn-add-to-cart")) {
     const selectedTeddy = e.target.parentElement;
 
-    lireInfosTeddy(selectedTeddy);
+    readInfosTeddy(selectedTeddy);
   }
 }
 
-// //Supprimer un élément du panier
-// function removeProduct(e) {
-//   console.log("teddy supprimé");
-//   if (e.target.classList.contains("supprimer-teddy")) {
-//     const teddyId = e.target.getAttribute("data-id");
-
-//     //Supprimer du tableau productsCart selon le data-id
-//     productsCart = productsCart.filter((product) => product.id !== teddyId);
-
-//     // localStorage.removeItem("teddyId");
-//     cartHTML(); //Itère sur le panier et montre le HTML
-//   }
-// }
-
 //Lire le contenu du HTML où on a cliqué et extraire les infos du Teddy
-function lireInfosTeddy() {
+function readInfosTeddy() {
   // console.log(teddy);
 
   const quantity = parseInt(document.querySelector("#quantity").value, 10);
@@ -131,58 +100,11 @@ function lireInfosTeddy() {
   }
 
   console.log(productsCart);
-  // cartHTML();
 
   //Ajouter le panier au localStorage
   syncUpStorage();
 }
 
-//Montrer le panier dans le HTML
-// function cartHTML() {
-//   //Vider le HTML pour éviter le doublon
-//   emptyHTML();
-
-//   // Parcourir le panier et générer le HTML
-//   productsCart.forEach((product) => {
-//     // console.log(product);
-//     const row = document.createElement("tr");
-//     row.innerHTML = `
-//     <td><img src="${product.image}" width="100"></td>
-//     <td>${product.title}</td>
-//     <td>${product.price}</td>
-//     <td>${product.quantity}</td>
-//     <td>
-//       <a href="#" class="supprimer-teddy" data-id="${productId}"><i class="fas fa-trash-alt"></i></a>
-//     </td>`;
-//     //Ajouter le HTML du panier dans le tbody
-//     listePanier.appendChild(row);
-//   });
-
-//   // //Ajouter le panier au localStorage
-//   // syncUpStorage();
-// }
-
 function syncUpStorage() {
   localStorage.setItem("cart", JSON.stringify(productsCart));
 }
-
-// function getTotalQuantityInCart(productsCart) {
-//   let productsInCart = [];
-//   productsCart.forEach((product) => {
-//     productsInCart = produc.quantity;
-//     console.log(productsInCart);
-//   });
-// }
-// function showProductQuantity() {
-//   const cartIcon = document.querySelector(".carticon");
-
-//   cartIcon.insertAdjacentHTML("beforeend", `<p>TEST</>`);
-// }
-
-//Supprimer les teddies du tbody
-// function emptyHTML() {
-//   // listePanier.innerHTML = "";
-//   while (listePanier.firstChild) {
-//     listePanier.removeChild(listePanier.firstChild);
-//   }
-// }
