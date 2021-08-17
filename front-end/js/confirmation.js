@@ -13,5 +13,5 @@ confirmationMessage.insertAdjacentHTML(
       <p>Votre commande numéro ${orderId} a bien été prise en compte pour un total de ${totalCart} €.</p>`
 );
 
-// Effacer localStorage
+// Vider localStorage
 localStorage.clear();

@@ -26,7 +26,7 @@
         <img src="/front-end/images/logo.png" alt="logo" class="logo" />
       </a>
       <a href="./panier.html" class="carticon"
-        ><i class="fas fa-shopping-cart"></i
+        ><i class="fas fa-shopping-cart carticonbadge"></i
       ></a>
     </header>
 
@@ -65,28 +65,27 @@
       <form action="" method="post" id="order-form">
         <div class="forminfo">
           <label for="firstname">Prénom : </label>
-          <input type="text" name="firstname" id="firstname" />
+          <input type="text" name="firstname" id="firstname" required />
         </div>
         <div class="forminfo">
           <label for="lastname">Nom : </label>
-          <input type="text" name="lastname" id="lastname" />
+          <input type="text" name="lastname" id="lastname" required />
         </div>
         <div class="forminfo">
           <label for="address">Adresse : </label>
-          <input type="text" name="address" id="address" />
+          <input type="text" name="address" id="address" required />
         </div>
         <div class="forminfo">
           <label for="postcode">Code Postal : </label>
-          <input type="text" name="postcode" id="postcode" />
+          <input type="text" name="postcode" id="postcode" required />
         </div>
         <div class="forminfo">
           <label for="city">Ville : </label>
-          <input type="text" name="city" id="city" />
+          <input type="text" name="city" id="city" required />
         </div>
         <div class="forminfo">
           <label for="email">Email : </label>
-          <input name="email" id="email" />
-          <!-- <input type="email" name="email" id="email" /> -->
+          <input type="email" name="email" id="email" required />
         </div>
         <div id="error"></div>
         <div class="formsubmit">

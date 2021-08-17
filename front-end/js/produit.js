@@ -1,10 +1,8 @@
 //Déclaration des variables
-let params = new URL(window.location).searchParams;
+let params = new URL(window.location).searchParams; //propriété
 let productId = params.get("id");
-console.log(productId);
-
+// console.log(productId);
 let productPrice = params.get("price");
-
 const cart = document.querySelector("#cart");
 const listePanier = document.querySelector("#liste-panier tbody");
 const emptyCartBtn = document.querySelector("#empty-cart");
@@ -20,7 +18,6 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
   .then((product) => {
     // console.log(product);
     displayProduct(product);
-    // addCartBtn();
   })
   .catch((error) => {
     console.log(error);
@@ -83,8 +80,6 @@ function addTeddy(e) {
 
 //Lire le contenu du HTML où on a cliqué et extraire les infos du Teddy
 function readInfosTeddy() {
-  // console.log(teddy);
-
   const quantity = parseInt(document.querySelector("#quantity").value, 10);
 
   //Vérifier si un élément existe déjà dans le panier
@@ -99,7 +94,7 @@ function readInfosTeddy() {
     productsCart[productId] = quantity;
   }
 
-  console.log(productsCart);
+  // console.log(productsCart);
 
   //Ajouter le panier au localStorage
   syncUpStorage();

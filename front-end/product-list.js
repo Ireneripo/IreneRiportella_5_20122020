@@ -15,10 +15,12 @@ function getProducts() {
       //Les promesses
 
       .then(function (data) {
+        // console.log(data);
         return data.json();
       })
 
       .then(function (products) {
+        // console.log(products);
         return products;
       })
 
@@ -53,7 +55,6 @@ function displayProducts(products) {
     </div>
   </div>`
     );
-
     // console.log(container);
   });
 }
