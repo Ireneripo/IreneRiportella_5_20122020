@@ -30,29 +30,29 @@ function displayProduct(product) {
   containerProduit.insertAdjacentHTML(
     "beforeend",
     `<div class="containerproduit" data-id="${productId}">
-  <img class="image" src="${product.imageUrl}" alt="image d'un ourson" />
-  <div class="info">
-    <h3 class="title">${product.name}</h3>
-    <p class="description">${product.description}</p>
-    <select name="couleur" id="couleur">
+      <img class="image" src="${product.imageUrl}" alt="image d'un ourson" />
+      <div class="info">
+      <h3 class="title">${product.name}</h3>
+      <p class="description">${product.description}</p>
+      <select name="couleur" id="couleur">
       <option class="label">Sélectionnez la couleur de votre teddy</option>
-    </select></br> 
-    <div class="quantity"> 
+      </select></br> 
+      <div class="quantity"> 
       <label for="quantity">Quantité : </label>
       <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
-    </div>
-    <h4 class="price">${price}</h4>
-    <button class="btn-add-to-cart" type="submit" >Ajouter au panier</button>
-  </div>
-</div>`
+      </div>
+      <h4 class="price">${price}</h4>
+      <button class="btn-add-to-cart" type="submit" >Ajouter au panier</button>
+      </div>
+      </div>`
   );
 
   //Sélection de la couleur du produit
   const colors = product.colors;
   // console.log(colors);
+  const colorDropdown = document.querySelector("#couleur");
   colors.forEach(function (color) {
-    const couleur = document.querySelector("#couleur");
-    couleur.insertAdjacentHTML("beforeend", `<option>${color}</option>`);
+    colorDropdown.insertAdjacentHTML("beforeend", `<option>${color}</option>`);
   });
 }
 

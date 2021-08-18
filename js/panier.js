@@ -26,7 +26,7 @@ function loadEventListeners() {
   emptyCartBtn.addEventListener("click", () => {
     copyOfProductsCart = {}; //Reset panier
 
-    tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
+    tableEmptyCart.innerHTML = `<p class="empty-cart-message">Votre panier est vide. <a href="../index.html" class="empty-cart-message-go-home">Continuez vos achats</a></p>`;
 
     localStorage.clear(); //Vide le localStorage
 
@@ -104,7 +104,7 @@ function removeProduct(e) {
     // console.log(e.target);
 
     const parent = e.target.parentElement.parentElement.parentElement;
-    console.log(parent);
+    // console.log(parent);
 
     const teddyId = parent.getAttribute("data-id");
     // console.log(teddyId);
@@ -195,10 +195,11 @@ function validateForm() {
   }
   if (messages.length > 0) {
     error.innerText = messages.join(" - ");
-    return;
+    return false;
   }
+  return true;
 }
-
+//********Envoi de la commande********
 function sendOrder() {
   //Création d'un objet contact
   let contact = {
@@ -244,8 +245,9 @@ function sendOrder() {
 }
 
 function validateOrder() {
-  validateForm();
-  sendOrder();
+  if (validateForm()) {
+    sendOrder();
+  }
 }
 (async function () {
   loadEventListeners();

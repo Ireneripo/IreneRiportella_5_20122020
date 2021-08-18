@@ -20,7 +20,7 @@ function getProducts() {
       })
 
       .then(function (products) {
-        // console.log(products);
+        console.log(products);
         return products;
       })
 

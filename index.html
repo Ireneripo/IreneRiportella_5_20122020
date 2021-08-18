@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produit - Orinoco</title>
+    <title>Accueil - Orinoco</title>
     <meta
       name="description"
       content="Orinoco, site de vente de peluches et oursons en ligne."
     />
-    <link rel="stylesheet" href="/front-end/sass/main.css" />
+    <link rel="stylesheet" href="./sass/main.css" />
     <script
       src="https://kit.fontawesome.com/dc80972f73.js"
       crossorigin="anonymous"
@@ -19,23 +19,18 @@
       href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
       rel="stylesheet"
     />
-    <!-- <style>
-      body {
-        background-image: url("/front-end/images/CuteAnimal06_generated.jpg");
-        background-repeat: repeat;
-        background-attachment: fixed;
-      }
-    </style> -->
   </head>
   <body>
     <header id="header" class="header">
-      <a href="../index.html">
-        <img src="/front-end/images/logo.png" alt="logo" class="logo" />
+      <a href="./index.html">
+        <img src="/images/logo.png" alt="logo" class="logo" />
       </a>
-      <a href="./panier.html"><i class="fas fa-shopping-cart carticon"></i></a>
+      <a href="./html/panier.html"
+        ><i class="fas fa-shopping-cart carticon"></i
+      ></a>
     </header>
 
-    <div id="containerproduit"></div>
+    <article id="container"></article>
 
     <footer>
       <ul>
@@ -43,8 +38,11 @@
         <li><a href="">Rejoignez-nous</a></li>
         <li><a href="">Contact</a></li>
       </ul>
+      <!-- <a href="https://www.vecteezy.com/free-vector/teddy-bear"
+        >Teddy Bear Vectors by Vecteezy</a
+      > -->
     </footer>
 
-    <script src="../js/produit.js"></script>
+    <script src="./product-list.js"></script>
   </body>
 </html>
