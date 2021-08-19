@@ -1,7 +1,6 @@
 //Déclaration des variables
 let params = new URL(window.location).searchParams; //propriété
 let productId = params.get("id");
-// console.log(productId);
 let productPrice = params.get("price");
 const cart = document.querySelector("#cart");
 const listePanier = document.querySelector("#liste-panier tbody");
@@ -68,6 +67,7 @@ function loadEventListeners() {
   });
 }
 
+//Viser le bouton Ajouter au panier et appeler la fonction suivante
 function addTeddy(e) {
   e.preventDefault();
 

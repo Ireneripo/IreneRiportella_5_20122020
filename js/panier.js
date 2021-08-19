@@ -1,5 +1,4 @@
 //Déclaration des variables du panier
-
 const cart = document.querySelector("#cart");
 const listePanier = document.querySelector("#liste-panier tbody");
 const totalPanier = document.querySelector(".total-panier");
@@ -21,6 +20,7 @@ const email = document.getElementById("email");
 const form = document.getElementById("order-form");
 let error = document.getElementById("error");
 
+//Écoute des événements
 function loadEventListeners() {
   //Vider le panier
   emptyCartBtn.addEventListener("click", () => {
@@ -80,6 +80,7 @@ const getProductById = async (productId) => {
   return product;
 };
 
+//Création de la ligne HTML
 const createProductLine = (product) => {
   const row = document.createElement("tr");
 
@@ -97,7 +98,6 @@ const createProductLine = (product) => {
 };
 
 //Supprimer un élément du panier
-
 function removeProduct(e) {
   // console.log("teddy supprimé");
   if (e.target.classList.contains("btn-delete-teddy")) {
@@ -129,8 +129,7 @@ function removeProduct(e) {
   countCart();
 }
 
-//********Calcul de la quantité totale de produits dans le panier
-
+//Calcul de la quantité totale de produits dans le panier
 function countCart() {
   const productIdByQuantity = JSON.parse(localStorage.getItem("cart"));
   let totalCount = Object.values(productIdByQuantity).reduce(
@@ -148,7 +147,7 @@ function countCart() {
   }
 }
 
-//********Calcul du prix total dans le panier
+//Calcul du prix total dans le panier
 function displayTotalCart() {
   totalCart = productsWithQuantity.reduce((total, current) => {
     return total + current.price * current.quantity;
@@ -158,8 +157,7 @@ function displayTotalCart() {
   displayTotal.innerHTML = `<div class="display-price-html">Total : ${totalCart} €</div>`;
 }
 
-//********Validation et envoi du formulaire de commande********
-
+//Validation et envoi du formulaire de commande
 function validateForm() {
   let messages = [];
 
@@ -199,7 +197,8 @@ function validateForm() {
   }
   return true;
 }
-//********Envoi de la commande********
+
+//Envoi de la commande
 function sendOrder() {
   //Création d'un objet contact
   let contact = {
@@ -244,6 +243,7 @@ function sendOrder() {
     });
 }
 
+//Valication de la commande
 function validateOrder() {
   if (validateForm()) {
     sendOrder();

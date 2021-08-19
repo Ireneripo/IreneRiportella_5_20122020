@@ -15,6 +15,10 @@ body {
   background-color: #f2f2f2;
 }
 
+.totalCount {
+  font-family: "Rubik", sans-serif;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -61,6 +65,7 @@ a {
 .container-panier #liste-panier td {
   margin: 4%;
   border-bottom: 1px solid #c0bfbf;
+  width: 4rem;
 }
 
 .container-panier #liste-panier td img {

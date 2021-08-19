@@ -11,8 +11,10 @@ html {
 
 body {
   font-family: "Rubik", sans-serif;
-  // background-color: #feffe5;
   background-color: #f2f2f2;
+}
+.totalCount {
+  font-family: "Rubik", sans-serif;
 }
 // .background-image {
 //   max-width: 100%;
@@ -50,6 +52,7 @@ a {
     & td {
       margin: 4%;
       border-bottom: 1px solid #c0bfbf;
+      width: 4rem;
       & img {
         margin: 6% 0;
         width: 32vmin;
