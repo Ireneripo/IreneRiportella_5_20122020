@@ -15,7 +15,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     return data.json();
   })
   .then((product) => {
-    // console.log(product);
+    console.log(product);
     displayProduct(product);
   })
   .catch((error) => {

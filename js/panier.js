@@ -241,6 +241,7 @@ function sendOrder() {
         );
       }
     });
+  console.log(orderData);
 }
 
 //Valication de la commande

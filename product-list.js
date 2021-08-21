@@ -15,7 +15,6 @@ function getProducts() {
       //Les promesses
 
       .then(function (data) {
-        // console.log(data);
         return data.json();
       })
 
